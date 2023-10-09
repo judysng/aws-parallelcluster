@@ -45,7 +45,7 @@ def test_efa(
     Grouped all tests in a single function so that cluster can be reused for all of them.
     """
     # We collected OSU benchmarks results for c5n.18xlarge only.
-    osu_benchmarks_instances = ["c5n.18xlarge"]
+    osu_benchmarks_instances = ["c5n.18xlarge", "p4d.24xlarge", "c6gn.16xlarge", "hpc6id.32xlarge"]
 
     # 32 instances are required to see performance differences in collective OSU benchmarks.
     max_queue_size = 32 if instance in osu_benchmarks_instances else 2
@@ -249,7 +249,7 @@ def _check_osu_benchmarks_results(test_datadir, instance, mpi_version, benchmark
     metric_namespace = "ParallelCluster/test_efa"
     for packet_size, value in re.findall(r"(\d+)\s+(\d+)\.", output):
         with open(
-            str(test_datadir / "osu_benchmarks" / "results" / instance / mpi_version / benchmark_name), encoding="utf-8"
+            str(test_datadir / "osu_benchmarks" / "results" / "c5n.18xlarge" / mpi_version / benchmark_name), encoding="utf-8"
         ) as result:
             previous_result = re.search(rf"{packet_size}\s+(\d+)\.", result.read()).group(1)
 
