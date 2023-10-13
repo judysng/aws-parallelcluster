@@ -525,6 +525,7 @@ Resources:
             Resource:
               - !Sub arn:${AWS::Partition}:s3:::parallelcluster-*
               - !Sub arn:${AWS::Partition}:s3:::aws-parallelcluster-*
+              - !Sub arn:${AWS::Partition}:s3:::performance-tests-resources-for-parallelcluster/*
             Effect: Allow
             Condition: !If
               - IsMultiRegion
