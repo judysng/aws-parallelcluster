@@ -1,8 +1,8 @@
 test-suites:
   performance_tests:
-    test_scaling.py::test_scaling_stress_test:
+    test_scaling.py::test_scaling:
       dimensions:
-        - regions: ["us-east-1"]
+        - regions: ["use1-az6"]
           instances: ["c5.large"]
           oss: ["alinux2"]
           schedulers: ["slurm"]
