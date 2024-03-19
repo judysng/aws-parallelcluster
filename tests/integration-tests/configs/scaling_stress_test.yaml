@@ -1,6 +1,6 @@
 test-suites:
   performance_tests:
-    test_scaling.py::test_scaling:
+    test_scaling.py::test_scaling_stress_test:
       dimensions:
         - regions: ["use1-az6"]
           instances: ["c5.large"]
