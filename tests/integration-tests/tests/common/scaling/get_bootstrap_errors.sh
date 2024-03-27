@@ -19,7 +19,7 @@ touch "bootstrap_errors.txt"
 # Find a log message like:
 # ... WARNING - Node bootstrap error: Node queue-0-dy-compute-resource-0-1690(192.168.90.197) ...
 # and get the IP address
-sudo cat ${CLUSTERMGTD_LOG} | grep -i "Node bootstrap error" | awk -F"[()]" '{print $2}' | while read -r ip_address ; do
+sudo cat ${CLUSTERMGTD_LOG} | grep -i "no corresponding instance in EC2 for node" | awk -F"[()]" '{print $2}' | while read -r ip_address ; do
   if ! grep -q "${ip_address}" "bootstrap_errors.txt"; then
     echo "${ip_address}" >> "bootstrap_errors.txt"
   fi

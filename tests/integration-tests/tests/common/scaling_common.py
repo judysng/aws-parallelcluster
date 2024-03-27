@@ -72,11 +72,12 @@ def _check_no_node_log_exists_for_ip_address(path, ip_address):
     return True
 
 
-def _sort_instances_by_launch_time(describe_instance_response):
+def _sort_instances_by_launch_time(describe_instances_page_iterator):
     instances = []
-    for reservation in describe_instance_response["Reservations"]:
-        for instance in reservation["Instances"]:
-            instances.append(instance)
+    for page in describe_instances_page_iterator:
+        for reservation in page["Reservations"]:
+            for instance in reservation["Instances"]:
+                instances.append(instance)
     instances.sort(key=lambda inst: inst["LaunchTime"])
     return instances
 
@@ -105,7 +106,7 @@ def get_bootstrap_errors(remote_command_executor: RemoteCommandExecutor, cluster
                     paginator.paginate(Filters=[{"Name": "private-ip-address", "Values": [ip_address]}])
                 )[-1]["InstanceId"]
                 logging.warning(f"Instance {instance_id} had bootstrap errors. Check the test outputs for details.")
-                compute_node_log = client.get_console_output(InstanceId=instance_id, Latest=True)["Output"]
+                compute_node_log = client.get_console_output(InstanceId=instance_id)["Output"]
                 with open(os.path.join(path, f"{ip_address}-{cluster_name}-{instance_id}-{region}-log.txt"), "w") as f:
                     f.write(compute_node_log)
             except IndexError:

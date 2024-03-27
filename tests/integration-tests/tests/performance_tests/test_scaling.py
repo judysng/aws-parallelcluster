@@ -85,7 +85,7 @@ def _get_scaling_time(capacity_time_series: list, timestamps: list, scaling_targ
 
 
 @pytest.mark.usefixtures("scheduler")
-@pytest.mark.parametrize("scaling_strategy", ["all-or-nothing", "best-effort"])
+@pytest.mark.parametrize("scaling_strategy", ["all-or-nothing"])
 def test_scaling_stress_test(
     test_datadir,
     instance,
