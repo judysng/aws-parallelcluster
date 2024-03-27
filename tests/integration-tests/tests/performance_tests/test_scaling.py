@@ -111,6 +111,7 @@ def test_scaling_stress_test(
     - Log with the Metrics Source that can be used from CloudWatch Console
     - A Metrics Image showing the scale up and scale down using a linear graph with annotations
     """
+    assert False
     # Get the scaling parameters
     scaling_test_config_file = request.config.getoption("scaling_test_config")
     scaling_test_config = validate_and_get_scaling_test_config(scaling_test_config_file)
@@ -177,6 +178,7 @@ def test_static_scaling_stress_test(
     up and down with dynamic nodes, by updating a cluster to use the target number of static nodes.
     This test produces the same metrics and outputs as the dynamic scaling stress test.
     """
+    assert False
     # Get the scaling parameters
     scaling_test_config_file = request.config.getoption("scaling_test_config")
     scaling_test_config = validate_and_get_scaling_test_config(scaling_test_config_file)

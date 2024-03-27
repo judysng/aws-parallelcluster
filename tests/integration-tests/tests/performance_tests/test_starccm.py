@@ -61,6 +61,7 @@ def test_starccm(
     scheduler_commands_factory,
     s3_bucket_factory,
 ):
+    assert False
     # Create S3 bucket for custom actions scripts
     bucket_name = s3_bucket_factory()
     s3 = boto3.client("s3")

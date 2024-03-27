@@ -40,6 +40,8 @@ def test_osu(
     scheduler_commands_factory,
     request,
 ):
+    assert False
+
     if instance not in OSU_BENCHMARKS_INSTANCES:
         raise Exception(
             f"OSU benchmarks can't be run on instance {instance}. "

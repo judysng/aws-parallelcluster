@@ -85,6 +85,8 @@ def get_metric(os, cluster, instance_type, instance_id, cw_client):
 
 
 def test_startup_time(pcluster_config_reader, clusters_factory, test_datadir, region, os, scheduler):
+    assert False
+
     cluster_config = pcluster_config_reader()
     cluster = clusters_factory(cluster_config)
 

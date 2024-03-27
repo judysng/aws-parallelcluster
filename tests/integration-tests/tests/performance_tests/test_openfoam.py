@@ -48,6 +48,7 @@ def test_openfoam(
     number_of_nodes,
     test_datadir,
 ):
+    assert False
     cluster_config = pcluster_config_reader(number_of_nodes=max(number_of_nodes))
     cluster = clusters_factory(cluster_config)
     logging.info("Cluster Created")
